@@ -13,7 +13,7 @@ using namespace std;
 По запросу вывести определенного человека.
 */
 
-class  Person
+class Person
 {
 private:
 	string	name;
@@ -51,12 +51,12 @@ public:
 	}
 };
 
-class  Student : public Person
+class Student : public Person
 {
 private:
 	int grade;
-public:
 	static int n_students;
+public:
 	Student() : grade(1)
 	{
 		n_students++;
@@ -66,6 +66,10 @@ public:
 		changePerson(name, age, gender, weight);
 		this->grade = grade;
 		n_students++;
+	}
+	static int get_n_students()
+	{
+		return (n_students);
 	}
 	void changeGrade(int grade)
 	{
@@ -79,6 +83,10 @@ public:
 	{
 		getPerson();
 		cout << "Grade: " << grade << endl;
+	}
+	~Student()
+	{
+		n_students--;
 	}
 };
 
@@ -191,11 +199,11 @@ int main()
 {
 	//1 Task
 	Student stud1;
-	cout << stud1.n_students << endl;
+	cout << stud1.get_n_students() << endl;
 
 	Student stud2;
-	cout << stud2.n_students << endl;
-	cout << stud1.n_students << endl;
+	cout << stud2.get_n_students() << endl;
+	cout << stud1.get_n_students() << endl;
 
 	Student stud3("Nikolai", 20, 'm', 60, 2);
 	stud3.printStudentData();
